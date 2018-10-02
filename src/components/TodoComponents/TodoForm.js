@@ -9,8 +9,9 @@ const TodoForm = (props) =>{
           <input ref={props.refHandler} 
                   placeholder="enter task">
           </input>
+          <button type="submit" onClick = { props.searchHandle}>Search</button>
           <button type="submit" >add Todo</button>
-          <button type="submit" onClick = {props.clear}>Clear Completed</button>
+          <button type="submit" onClick ={props.clear}>Clear Completed</button>
         </form>
     
        )

@@ -5,7 +5,7 @@ import './Todo.css';
 import Todo from './Todo';
 
 const TodoList = (props) =>{
-    console.log(props)
+  
     return (
        
         <ul>{props.items.map(item =>(

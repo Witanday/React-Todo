@@ -16,8 +16,7 @@ class App extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.clearTodo = this.clearTodo.bind(this);
     this.toggleCompleted = this.toggleCompleted.bind(this)
-  
-    
+    this.searchTodo =  this.searchTodo.bind(this)
   }
   
   addItem(e) {
@@ -44,6 +43,14 @@ class App extends React.Component {
   clearTodo(e) {
     const items = this.state.items.filter(item =>{
           return item.completed !== true
+    })
+    this.setState({ items })
+ this._inputElement.value = "";
+  }
+
+  searchTodo() {
+    const items = this.state.items.filter(item =>{
+          return item.inputTask.indexOf(this._inputElement.value) !== -1 
     })
     this.setState({ items })
  this._inputElement.value = "";
@@ -79,10 +86,12 @@ class App extends React.Component {
     return (
       <div className='appstyle'>
         <h2>Welcome to My Todo App!</h2>
-        <TodoList  items ={this.state.items} toggleCompl={this.toggleCompleted}/>
         <TodoForm addItem = {this.addItem} 
         clear = {this.clearTodo}
+        searchHandle = {this.searchTodo}
         refHandler={(a) => this._inputElement = a} />
+        <TodoList  items ={this.state.items} toggleCompl={this.toggleCompleted}/>
+        
       </div>
     );
   }
